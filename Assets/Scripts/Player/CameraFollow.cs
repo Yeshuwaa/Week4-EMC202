@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
+
     public float smoothing;
 
     public Vector2 maxPos;
@@ -18,5 +19,8 @@ public class CameraFollow : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, minPos.y, maxPos.y);
 
         transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
+
     }
+
+
 }

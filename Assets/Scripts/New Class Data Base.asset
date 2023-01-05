@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781d4d7fd2232f94d810983c75aa77ab, type: 3}
+  m_Name: New Class Data Base
+  m_EditorClassIdentifier: 
+  character:
+  - className: Knight
+    classSprite: {fileID: 21300000, guid: bd0be9d27e85a0441942c268c22c1115, type: 3}
+  - className: Wizard
+    classSprite: {fileID: 21300000, guid: deccfbb77b175534f8b96825c5702f2b, type: 3}
+  - className: Archer
+    classSprite: {fileID: 21300000, guid: d76fad39955a7114c963441aa2ca26f8, type: 3}
