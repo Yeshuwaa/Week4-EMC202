@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CastingFireball : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip sfx;
 
     public Transform firePoint;
     public GameObject fireballPrefab;
 
-    private float fireballForce = 20f;
+    public float fireballForce = 20f;
 
     public float attackDelay;
     public Transform weaponTransform;
@@ -21,7 +24,9 @@ public class CastingFireball : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             MagicCast();
-            StartCoroutine(fireballCast());
+            StartCoroutine(FireballCast());
+            audioSource.clip = sfx;
+            audioSource.Play();
         }
     }
 
@@ -32,7 +37,7 @@ public class CastingFireball : MonoBehaviour
         rigidbody.AddForce(firePoint.up * fireballForce, ForceMode2D.Impulse);
     }
 
-    IEnumerator fireballCast()
+    IEnumerator FireballCast()
     {
         Collider2D enemy = Physics2D.OverlapCircle(weaponTransform.position, weaponRange, enemyLayer);
         yield return new WaitForSeconds(attackDelay);

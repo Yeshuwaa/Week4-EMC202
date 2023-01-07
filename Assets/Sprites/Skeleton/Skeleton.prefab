@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 45821406468896108}
   - component: {fileID: 45821406468896109}
   - component: {fileID: 45821406468896111}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0005033314, y: -0.00992427}
+  m_Offset: {x: -0.00035458058, y: 0.014955873}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09224121, y: 0.13178733}
+  m_Size: {x: 0.08880946, y: 0.07516356}
   m_EdgeRadius: 0
 --- !u!114 &45821406468896109
 MonoBehaviour:
@@ -159,4 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11e2b9637a64e74cb2787c6b4109af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 100
+  enemyHealth: 0
+  maxHealth: 50
+  audioSource: {fileID: 4036655299836106005, guid: 5bd267567d9624b4faab74779a772c89, type: 3}
+  sfx: {fileID: 8300000, guid: 9e469cb7e153e5d4398f3f9894d10702, type: 3}

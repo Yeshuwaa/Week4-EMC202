@@ -6,15 +6,22 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int enemyHealth = 100;
-    
-    public void TakeDamage(int amount)
+    [SerializeField] float enemyHealth, maxHealth = 50f;
+
+    public AudioSource audioSource;
+    public AudioClip sfx;
+
+    public void Start()
     {
+        enemyHealth = maxHealth;
+    }
+    public void TakeDamage(float amount)
+    {
+
         enemyHealth -= amount;
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
-
 }

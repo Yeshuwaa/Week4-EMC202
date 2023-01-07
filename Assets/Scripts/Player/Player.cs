@@ -1,61 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] protected int _health;
-    [SerializeField] protected int _damage;
 
     private bool hit = true;
 
-    public ClassDataBase classDB;
-
-    public SpriteRenderer artworkSprite;
-
-    private int selectedOption = 0;
-
-    void Start()
-    {
-        if (!PlayerPrefs.HasKey("selectedOption"))
-        {
-            selectedOption = 0;
-        }
-
-        else
-        {
-            Load();
-        }
-
-        UpdateCharacter(selectedOption);
-    }
-
-    IEnumerator iFrame()
-    {
-        hit = false;
-        yield return new WaitForSeconds(1f);
-        hit = true;
-    }
+    public AudioSource audioSource;
+    public AudioClip sfx;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Enemy")
+        if (collision.transform.tag == "Enemy")
         {
             if (hit)
             {
-                StartCoroutine(iFrame());
+                StartCoroutine(Iframe());
                 _health--;
+                if (_health <= 0)
+                {
+                    StartCoroutine(DeathSfx());
+                }
             }
         }
     }
-    private void UpdateCharacter(int selectedOption)
+    IEnumerator DeathSfx()
     {
-        Class character = classDB.GetCharacter(selectedOption);
-        artworkSprite.sprite = character.classSprite;
+        audioSource.clip = sfx;
+        audioSource.Play();
+        yield return new WaitForSeconds(.3f);
+        Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
     }
 
-    private void Load()
+    IEnumerator Iframe()
     {
-        selectedOption = PlayerPrefs.GetInt("SelectedOption");
+        hit = false;
+        yield return new WaitForSeconds(.3f);
+        hit = true;
     }
+
 }

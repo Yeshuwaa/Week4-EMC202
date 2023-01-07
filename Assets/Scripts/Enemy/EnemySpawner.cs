@@ -8,8 +8,9 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject[] enemies;
 
-     void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(5f);
         StartCoroutine(SpawnAnEnemy());
     }
 
@@ -21,6 +22,5 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemies[Random.Range(0, enemies.Length)], spawnPos, Quaternion.identity);
         yield return new WaitForSeconds(time);
         StartCoroutine(SpawnAnEnemy());
-
     }
 }
